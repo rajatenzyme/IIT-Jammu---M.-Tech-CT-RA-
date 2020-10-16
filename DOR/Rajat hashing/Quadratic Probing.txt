@@ -1,0 +1,245 @@
+//Author:- Rajat Mittal
+//M.Tech. Computer Technology, IIT JAMMU
+//2020PCT0066
+
+#include<bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long 
+#define int ll
+#define ps push
+#define pb push_back
+#define INF 1000000007
+#define MOD 1000000007
+#define mp make_pair
+#define rep(i,a,b) for (int i = a; i < b; i++)
+#define repd(i,a,b) for (int i = a; i >= b; i--)
+#define all(v) v.begin(),v.end()
+#define pii pair<int,int>
+#define F first
+#define S second
+#define mii map<int,int>
+#define vi vector<int>
+#define vvi vector<vi>
+#define vpii vector<pair<int,int>>
+#define itr :: iterator it
+#define WL(t) while(t --)
+#define gcd(a,b) __gcd((a),(b))
+#define lcm(a,b) ((a)*(b))/gcd((a),(b))
+#define debug(x) cout << x << endl;
+#define debug2(x,y) cout << x << " " << y << endl;
+#define debug3(x,y,z) cout << x << " " << y << " " << z << endl;
+
+
+float alpha; //loading factor
+int N; // Number of Elements
+int key_range; //Maximum value of Key ( Range)
+int slots; // Number of Slots available in Table 
+int key, value, h_index;
+ll  Cinsert;
+ll Cdelete;
+ll CSearch;
+int Sn = 0; // Successful Searches
+int Un = 0; // Unsucessful Searches
+//Defining a structure of key value pair
+struct Hashing {
+    int key;
+    int value;
+};
+
+// An optimized school method based C++ program to check 
+// if a number is prime 
+bool isPrime(int n) 
+{ 
+    // Corner cases 
+    if (n <= 1) 
+        return false; 
+    if (n <= 3) 
+        return true; 
+  
+    // This is checked so that we can skip 
+    // middle five numbers in below loop 
+    if (n % 2 == 0 || n % 3 == 0) 
+        return false; 
+  
+    for (int i = 5; i * i <= n; i = i + 6) 
+        if (n % i == 0 || n % (i + 2) == 0) 
+            return false; 
+  
+    return true; 
+} 
+
+// Declaring a hashtable of struct Hashing type
+Hashing* hashTable = NULL;
+
+//Initializing hash Table
+void initialize()
+{
+    cout<<"ENTER LOADING FACTOR"<<" ";
+    cin>>alpha;
+    cout<<"ENTER NUMBER OF ELEMENTS"<<" ";
+    cin>>N;
+    cout<<"ENTER MAX VALUE OF KEY (RANGE)"<<" ";
+    cin>>key_range;
+    
+    // Alpha = No. of Elements/ No. of Slots available
+    // ==> 
+    slots = N / alpha; 
+    
+    // Searching for first prime number nearest to no_of_slots
+    bool first_prime = false;
+    
+    while(!first_prime)
+    {
+        slots++;
+        if(isPrime(slots))
+        first_prime = true;
+    }
+    // Now we have our prime number which is nearest to no_of_slots e.g. if slots = 10000, then first_prime will be 10007
+    
+    
+    hashTable = new Hashing[slots]; // Defining the size of hash table to the no of slots.
+    
+    // Initializing whole hashTable keys to -1.
+    for(int i=1; i<slots; i++)
+    {
+        hashTable[i].key = -1;
+    }
+    
+}
+
+//Method of finding hash Index in table 
+void Index()
+{
+    h_index = key % slots; 
+}
+
+// Inserting the elements into hash table
+void Insert()
+{
+    int count = N;
+    int Cptr = 0;
+    int i = 0;
+    while(count!=0)
+    {
+        value = rand(); //random value
+        key = rand() % key_range; //random key in the limit of key_range
+        Index();
+        while (hashTable[h_index].key!=-1)
+        {
+            if(hashTable[h_index].key == key)
+            {
+                break;
+            }
+            else
+            {   
+                //++h_index;
+                i++;
+                h_index = h_index + pow(i,2);
+                h_index = h_index % slots;
+                Cptr++;
+                Cinsert++;
+                if(Cptr == slots)
+                break;
+            }
+        }
+        if(Cptr<slots)
+        {
+            hashTable[h_index].key = key;
+            hashTable[h_index].value = value;
+            Cinsert;
+        }
+        count--;
+    }
+}
+
+//Searching the elements from hash table
+void Search()
+{
+    int count = N;
+    int Sptr = 0;
+    int i =0;
+    while(count!=0)
+    {
+        key = rand() % key_range ;
+        Index();
+        while(hashTable[h_index].key!=-1)
+        {
+            if(hashTable[h_index].key==key)
+            {
+                ++CSearch;
+                Sn = CSearch;
+                break;
+            }
+            i++;
+            h_index = h_index + pow(i,2);
+            //++h_index;
+            h_index = h_index % slots;
+            ++CSearch;
+            ++Sptr;
+            if(Sptr == slots)
+            break;
+            
+        }
+        if(hashTable[h_index].key == -1 || Sptr == slots)
+                Un = CSearch;
+        count--;
+    }
+}
+
+//Deleting th elements from hash Table
+
+void Delete()
+{
+    int count = N;
+    int i =0;
+    while(count!=0)
+    {
+        key=(rand() % key_range);
+        Index();
+   
+        while(hashTable[h_index].key!=-1)
+        {
+            if(hashTable[h_index].key == key)
+             {
+              hashTable[h_index].key=-1;
+              hashTable[h_index].value=-1;
+             }
+             i++;
+             h_index = h_index + pow(i,2);
+            //++h_index;
+             ++Cdelete;
+             h_index= h_index % slots;
+       }
+      count--;
+    }
+}
+
+//Displaying the analysis from program
+
+void display() 
+{
+    cout<<endl;
+    cout<<"/////////////////// Quadratic Probing//////////////////"<<endl;
+    cout<<"Load factor is "<<alpha<<endl;
+    cout<<"No. of elements are "<<N<<endl;
+    cout<<"Range of Keys is "<<key_range<<endl;
+    cout<<"Number of slots in the hash table: "<<slots<<endl;
+    cout<<endl<<"-------------------------------------------------------------------"<<endl;
+    
+    cout<<"Avg No. of probings needed for insertion of "<<N<<" with alpha: "<<alpha<<" is= "<<((float)Cinsert/N)<<endl;
+    cout<<"Avg No. of probings needed for successful search in  "<<N<<" with alpha: "<<alpha<<" is= "<<((float)Sn/N)<<endl;
+    cout<<"Avg No. of probings needed for unsuccessful search in  "<<N<<" with alpha: "<<alpha<<" is= "<<((float)Un/N)<<endl;
+    cout<<"Avg No. of probings needed for deletion of  "<<N<<" with alpha: "<<alpha<<" is= "<<((float)Cdelete/N)<<endl;
+
+}
+
+ main()
+{
+    initialize();
+    Insert();
+    Search();
+    Delete();
+    display();
+    return 0;
+}

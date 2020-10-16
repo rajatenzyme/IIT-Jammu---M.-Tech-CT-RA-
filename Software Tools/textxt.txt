@@ -1,0 +1,213 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage{utopia} %font utopia imported
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[Course Expectations] %optional
+{Course Expectations Software Tools CSP007P1M}
+
+
+\author[Rajat Mittal] % (optional)
+{Rajat Mittal\\
+2020PCT0066\\
+2020pct0066@iitjammu.ac.in}
+
+\institute[IIT JAMMU] % (optional)
+{
+  \inst{}%
+  IIT Jammu\\
+  Nagrota, NH 44 Jammu (J.K.)
+}
+
+\date
+{30, Sept 2020}
+
+
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{INDEX}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+\begin{frame}
+\frametitle{INDEX}
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------
+
+
+\section{Introduction}
+\section{Expectations}
+\subsection{Development tools}
+\subsubsection{AWS}
+\subsubsection{Jenkins}
+\subsubsection{Rstudio}
+\subsubsection{Git}
+\subsubsection{MATLAB}
+\subsubsection{LATEX}
+\subsection{Languages}
+\section{Conclusion}
+%---------------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+\frametitle{Introduction}
+This report is basically on what I expect from this course on software tools. The course is expected to cover all the industry required software along with certain languages to help me excel in the field.
+
+\end{frame}
+
+%---------------------------------------------------------
+
+
+%---------------------------------------------------------
+%Example of the \pause command
+\begin{frame}
+\frametitle{Expectations}
+
+  Development tools - \newline
+  Below is the brief introduction of the tools which I am expecting to learn through this course.
+
+
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+%Highlighting text
+\begin{frame}
+\frametitle{AWS}
+
+Amazon web service is a platform that offers flexible, reliable, scalable, easy-to-use and cost-effective cloud computing solutions. Cloud computing is a term referred to storing and accessing data over the internet. It doesn't store any data on the hard disk of your personal computer. In cloud computing, you can access data from a remote server.
+
+
+\end{frame}
+%---------------------------------------------------------
+
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Jenkins}
+Jenkins is an open source Continuous Integration server capable of orchestrating a chain of actions that help to achieve the Continuous Integration process (and not only) in an automated fashion.
+
+
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Rstudio}
+RStudio is an open-source tool for programming in R. RStudio is a flexible tool that helps you create readable analyses, and keeps your code, images, comments, and plots together in one place.
+
+
+
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Git}
+Git is the most commonly used version control system. Git is a distributed version control system. These fully-functional local repositories make it is easy to work online or remotely. You commit your work locally, and then sync your copy of the repository with the copy on the server.
+
+
+
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{MATLAB}
+
+The matrix-based MATLAB language is the world's most natural way to express computational mathematics. Built-in graphics make it easy to visualize and gain insights from data.
+
+
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{LATEX}
+
+Latex is a document preparation system for producing professional-looking documents, it is not a word processor. It is particularly suited to producing long, structured documents , and is very good at typesetting equations. It is available as free software for most operating systems.
+
+
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Languages}
+\begin{table}[]
+\begin{tabular}{ll}
+Languages       & Usage                                                                                                                                                                             \\
+                &                                                                                                                                                                                   \\
+C++             & \begin{tabular}[c]{@{}l@{}}C++ is a powerful general - purpose programming \\ language and can be used for develop operating \\ systems, browsers, games, and so on.\end{tabular} \\
+                &                                                                                                                                                                                   \\
+Python          & Data Science and all.                                                                                                                                                             \\
+                &                                                                                                                                                                                   \\
+HTML, CSS, JS   & Web Development                                                                                                                                                                   \\
+                &                                                                                                                                                                                   \\
+Shell Scripting & \begin{tabular}[c]{@{}l@{}}list of commands in a computer program\\  that is run by the Unix shell which is a\\  command line interpreter.\end{tabular}                          
+\end{tabular}
+\end{table}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Conclusion}
+
+This report hence covers the basic expertise that I would like to acquire while completing the course.
+
+
+
+
+\end{frame}
+%---------------------------------------------------------
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{}
+
+\begin{center}
+    THANK YOU
+\end{center} 
+
+
+
+\end{frame}
+%---------------------------------------------------------
+
+\end{document}
